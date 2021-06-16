@@ -2,7 +2,7 @@
 
 Welcome to my fun little side project!
 
-A couple of years ago Daniel Sabinasz did a great tutorial on the basic functionality of TensorFlow 1 called [TensorSlow](https://github.com/danielsabinasz/TensorSlow) . As it was done in pure Python it was also possible to run it with [Pythonista](http://omz-software.com/pythonista/) on iOS. I really liked having the possibility to play around with neural networks on the go to see what happens with different setting. But with TensorFlow 2.0 and mainly using the Keras API for creating the networks, I thought it might be the time to update TensorSlow as well.
+A couple of years ago Daniel Sabinasz did a great tutorial on the basic functionality of TensorFlow 1 called [TensorSlow](https://github.com/danielsabinasz/TensorSlow). As it was done in pure Python it was also possible to run it with [Pythonista](http://omz-software.com/pythonista/) on iOS. I really liked having the possibility to play around with neural networks on the go to see what happens with different setting. But with TensorFlow 2.0 and mainly using the Keras API for creating the networks, I thought it might be the time to update TensorSlow as well.
 
 So far, it can do everything needed for a very basic neural network:
 - Download MNIST and convert it to a numpy array
