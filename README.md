@@ -12,7 +12,7 @@ So far, it can do everything needed for a very basic neural network:
 - Train the model
 - Evaluate the model
 
-## How to use in Pythoniste
+## How to use in Pythonista
 
 Just copy the tensorslow folder into the Pythonista folder, then it should be possible to import everything.
 
