@@ -36,18 +36,15 @@ class Progbar:
                 #    end="\r"
                 #)"""
         self._seen_so_far = current
-        if sys.platform == "iOS":
-            print(sys.platform)
-        else:
-            print(
-                str(self._seen_so_far) + "/" +
-                str(self.target) + " [" +
-                "=" * int(self._seen_so_far // (self.target/30)+1) +
-                "." * (30 - (int(
-                    np.ceil(self._seen_so_far // (self.target/30)))+1)) +
-                "] - " +
-                "ETA: ",
-                values, end="\r")
+        print(
+            str(self._seen_so_far) + "/" +
+            str(self.target) + " [" +
+            "=" * int(self._seen_so_far // (self.target/self.width)+1) +
+            "." * (self.width - (int(
+                np.ceil(self._seen_so_far // (self.target/self.width)))+1)) +
+            "] - " +
+            "ETA: ",
+            values, end="\r")
 
     def add(self, n, values=None):
         self.update(self._seen_so_far + n, values)

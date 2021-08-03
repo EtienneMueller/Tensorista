@@ -4,7 +4,7 @@ from tensorslow.keras.utils.np_utils import to_categorical
 # from tensorslow.keras.backend import sigmoid, d_sigmoid  # , relu, d_relu
 import numpy as np
 # import time
-# import sys
+import sys
 
 
 class Functional(Model):
@@ -81,7 +81,11 @@ class Sequential(Functional):
         print("Batches:", batches)
         for i in range(epochs):
             print("\nEpoch", str(i+1) + "/" + str(epochs))
-            progbar = Progbar(batches, stateful_metrics=None)
+
+            if sys.platform == "ios":
+                progbar = Progbar(batches, width=10, stateful_metrics=None)
+            else:
+                progbar = Progbar(batches, width=30, stateful_metrics=None)
             for j in range(int(batches)):
                 X = x_train[j*batch_size:(j+1)*batch_size, :]
                 Y = y_train[j*batch_size:(j+1)*batch_size]
@@ -129,7 +133,7 @@ class Sequential(Functional):
 
                 # for j in range(int(batches//batch_size)):
                 # loss = (1/4) * (-np.dot(Y, np.log(A2).T) - np.dot(1 - Y, np.log(1 - A2).T))
-                values = [('Acc', acc_test), ('pr', np.random.random(1))]
+                values = [('Acc', acc_test), ('pr', np.round(np.random.random(1), 3))]
                 progbar.add(1, values=values)
 
     def evaluate(self, x_test, y_test, batch_size=128):
