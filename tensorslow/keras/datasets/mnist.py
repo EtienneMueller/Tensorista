@@ -1,25 +1,19 @@
 import numpy as np
 import gzip
-import urllib.request
-import os
-# import scipy.misc as smp
-# import math
-# import time
-# import tensorflow as tf
 
-# TO-DO
-# - CIFAR-10 and CIFAR-100 (see https://www.cs.toronto.edu/~kriz/cifar.html)
+# MNIST
+# -----
+# From: http://yann.lecun.com/exdb/mnist/
+# References:
+# [LeCun et al., 1998a]
+# Y. LeCun, L. Bottou, Y. Bengio, and P. Haffner.
+# "Gradient-based learning applied to document recognition."
+# Proceedings of the IEEE, 86(11):2278-2324,
+# November 1998.
 
-"""
-Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
-32768/29515 [=================================] - 0s 0us/step
-Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz
-26427392/26421880 [==============================] - 0s 0us/step
-Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-labels-idx1-ubyte.gz
-8192/5148 [===============================================] - 0s 0us/step
-Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-images-idx3-ubyte.gz
-4423680/4422102 [==============================] - 0s 0us/step
-Epoch 1/15"""
+# CIFAR-10 and CIFAR-100
+# To Do.
+# https://www.cs.toronto.edu/~kriz/cifar.html
 
 
 def load_data():
@@ -31,23 +25,6 @@ def load_data():
         y_test = np.load(path+'t10k-labels-idx1-ubyte.npy')
     except FileNotFoundError:
         print("[INFO] MNIST as numpy array not found")
-        try:
-            os.makedirs(path)
-        except Exception:  # FileExistsError:
-            pass
-        try:
-            print("[INFO] downloading MNIST from http://yann.lecun.com/exdb/mnist")
-            x_train_url = 'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz'
-            urllib.request.urlretrieve(x_train_url, path+'train-images-idx3-ubyte.gz')
-            y_train_url = 'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz'
-            urllib.request.urlretrieve(y_train_url, path+'train-labels-idx1-ubyte.gz')
-            x_test_url = 'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz'
-            urllib.request.urlretrieve(x_test_url, path+'t10k-images-idx3-ubyte.gz')
-            y_test_url = 'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
-            urllib.request.urlretrieve(y_test_url, path+'t10k-labels-idx1-ubyte.gz')
-        except Exception:
-            print("[INFO] download failed.")
-
         print("[INFO] converting to numpy array and exporting")
         # Import training images
         with gzip.open(path+'train-images-idx3-ubyte.gz', 'rb') as f:
@@ -56,7 +33,9 @@ def load_data():
         for image in range(60000):
             for column in range(28):
                 for row in range(28):
-                    x_train[image, column, row] = ord(images_content[(image*784)+(column*28)+row+16: (image*784)+(column*28)+row+17])
+                    x_train[image, column, row] = ord(
+                        images_content[(image*784)+(column*28)+row+16:
+                                       (image*784)+(column*28)+row+17])
         np.save(path+'train-images-idx3-ubyte.npy', x_train)
 
         # Import training labels
@@ -74,7 +53,9 @@ def load_data():
         for image in range(10000):
             for column in range(28):
                 for row in range(28):
-                    x_test[image, column, row] = ord(images_content[(image*784)+(column*28)+row+16: (image*784)+(column*28)+row+17])
+                    x_test[image, column, row] = ord(
+                        images_content[(image*784)+(column*28)+row+16:
+                                       (image*784)+(column*28)+row+17])
         np.save(path+'t10k-images-idx3-ubyte.npy', x_test)
 
         # Import test labels
