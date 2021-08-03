@@ -23,8 +23,7 @@ Epoch 1/15"""
 
 
 def load_data():
-    path = 'tensorslow/keras/datasets/files/'
-    # path = '~/files/'
+    path = 'tensorslow/keras/datasets/tmp/'
     try:
         x_train = np.load(path+'train-images-idx3-ubyte.npy')
         y_train = np.load(path+'train-labels-idx1-ubyte.npy')
