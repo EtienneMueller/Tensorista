@@ -1,4 +1,4 @@
-tensorslow/keras/datasets/files/
+*.npy
 .vscode/
 
 # Byte-compiled / optimized / DLL files
