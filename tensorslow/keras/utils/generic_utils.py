@@ -36,6 +36,10 @@ class Progbar:
                 #    end="\r"
                 #)"""
         self._seen_so_far = current
+        if sys.platform == "ios":
+            endline = "\n"
+        else:
+            endline = "\r"
         print(
             str(self._seen_so_far) + "/" +
             str(self.target) + " [" +
@@ -44,7 +48,7 @@ class Progbar:
                 np.ceil(self._seen_so_far // (self.target/self.width)))+1)) +
             "] - " +
             "ETA: ",
-            values, end="\r")
+            values, end=endline)
 
     def add(self, n, values=None):
         self.update(self._seen_so_far + n, values)
