@@ -1,5 +1,8 @@
 import tensorslow as tf
+import sys
 
+
+print(sys.platform)
 
 tf.random.set_seed(1234)
 

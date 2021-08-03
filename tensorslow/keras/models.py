@@ -35,7 +35,9 @@ class Sequential(Functional):
 
     def summary(self):
         print('\nModel: "' + self.name + '"\n' + ("_" * 65))
-        print("Layer (type)", " " * 15, "Output Shape", " " * 12, "Param #\n" + "=" * 65)
+        print("Layer (type)", " " * 15,
+              "Output Shape", " " * 12,
+              "Param #\n" + "=" * 65)
         print("(l1_name)" + "\n" + "_" * 65)
         print("(l2_name)" + "\n" + "=" * 65)
         print("Total params:")
@@ -48,7 +50,9 @@ class Sequential(Functional):
         self.metrics = metrics
 
     def cross_entropy_loss(Y, A2):
-        return np.absolute(np.mean((Y * np.log(A2)) - ((1 - Y) * np.log(1 - A2))))
+        return np.absolute(np.mean(
+            (Y * np.log(A2)) - ((1 - Y) * np.log(1 - A2)))
+        )
 
     def softmax(x):
         # Numerically stable with large exponentials
@@ -61,7 +65,13 @@ class Sequential(Functional):
         L = -(1./m) * L_sum
         return L
 
-    def fit(self, x_train, y_train, epochs=None, batch_size=None, validation_data=None):
+    def fit(self,
+            x_train,
+            y_train,
+            epochs=None,
+            batch_size=None,
+            validation_data=None):
+
         x_val, y_val = validation_data
         y_train = to_categorical(y_train, num_classes=10)
 

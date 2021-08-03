@@ -1,9 +1,16 @@
 import numpy as np
 import time
+import sys
 
 
 class Progbar:
-    def __init__(self, target, width=30, verbose=1, interval=0.05, stateful_metrics=None, unit_name='step'):
+    def __init__(self,
+                 target,
+                 width=30,
+                 verbose=1,
+                 interval=0.05,
+                 stateful_metrics=None,
+                 unit_name='step'):
         self.target = target
         self.width = width
         self.verbose = verbose
@@ -29,14 +36,18 @@ class Progbar:
                 #    end="\r"
                 #)"""
         self._seen_so_far = current
-        print(
-            str(self._seen_so_far) + "/" +
-            str(self.target) + " [" +
-            "=" * int(self._seen_so_far // (self.target/30)+1) +
-            "." * (30 - (int(np.ceil(self._seen_so_far // (self.target/30)))+1)) +
-            "] - " +
-            "ETA: ",
-            values, end="\r")
+        if sys.platform == "iOS":
+            print(sys.platform)
+        else:
+            print(
+                str(self._seen_so_far) + "/" +
+                str(self.target) + " [" +
+                "=" * int(self._seen_so_far // (self.target/30)+1) +
+                "." * (30 - (int(
+                    np.ceil(self._seen_so_far // (self.target/30)))+1)) +
+                "] - " +
+                "ETA: ",
+                values, end="\r")
 
     def add(self, n, values=None):
         self.update(self._seen_so_far + n, values)
