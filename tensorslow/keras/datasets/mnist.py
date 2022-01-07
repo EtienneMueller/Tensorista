@@ -1,4 +1,6 @@
 import numpy as np
+import urllib
+import requests
 import gzip
 
 # MNIST
@@ -17,6 +19,13 @@ import gzip
 
 
 def load_data():
+    url = "http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz"
+    destpath = 'tensorslow/keras/datasets/tmp2/'
+    with open(destpath,'wb') as file:
+        file.write(requests.get(url).content)
+
+    urllib.urlretrieve(url, "train.gz")
+
     path = 'tensorslow/keras/datasets/tmp/'
     try:
         x_train = np.load(path+'train-images-idx3-ubyte.npy')
