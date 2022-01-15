@@ -16,7 +16,7 @@ So far, it can do everything needed for a very basic neural network:
 
 There a two ways: the easy one and the better one. The easy one would be to copy the tensorslow folder into site-packages from Pythonista. Then you can import everything like a normal module. But if you want to update, then you have to do it manually (although I might not work on this project that often). The nicer way is to use [Working Copy](https://workingcopy.app/) as git client. As iOS is a bit strict you have to clone the repo the following way:
 - press the plus button and chose "Setup synced directory"
-- chose the Pythonista folder in iCloud
+- chose the local Pythonista folder
 - then under "Repository" choose "Add Remote" and paste the URL to this repository
 - Save, fetch and after a couple of seconds you should be able to see the folder in Pythonista
 
