@@ -1,4 +1,4 @@
-import tensorslow as tf
+import tensorista as tf
 import sys
 
 

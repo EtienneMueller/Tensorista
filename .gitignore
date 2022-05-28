@@ -1,4 +1,5 @@
 *.npy
+*.gz
 .vscode/
 
 # Byte-compiled / optimized / DLL files
