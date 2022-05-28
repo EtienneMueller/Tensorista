@@ -37,7 +37,7 @@ def load_data():
         http = urllib3.PoolManager()
 
         # Downloading and converting MNIST training images
-        print("[INFO] downloading MNIST training images")
+        print("[INFO] Downloading MNIST training images")
         url = 'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz'
         filename = 'train-images-idx3-ubyte.gz'
         resp = http.request('GET', url)
@@ -46,7 +46,7 @@ def load_data():
         f.close()
         resp.release_conn()
 
-        print("[INFO] converting MNIST training images to numpy arrays")
+        print("[INFO] Converting MNIST training images to numpy arrays")
         with gzip.open(path+'train-images-idx3-ubyte.gz', 'rb') as f:
             images_content = f.read()
         x_train = np.zeros((60000, 28, 28), dtype=int)
@@ -59,7 +59,7 @@ def load_data():
         np.save(path+'train-images-idx3-ubyte.npy', x_train)
 
         # Downloading and converting MNIST training labeks
-        print("[INFO] downloading MNIST training labels")
+        print("[INFO] Downloading MNIST training labels")
         url = 'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz'
         filename = 'train-labels-idx1-ubyte.gz'
         resp = http.request('GET', url)
@@ -68,7 +68,7 @@ def load_data():
         f.close()
         resp.release_conn()
 
-        print("[INFO] converting MNIST training labels to numpy arrays")
+        print("[INFO] Converting MNIST training labels to numpy arrays")
         with gzip.open(path+'train-labels-idx1-ubyte.gz', 'rb') as f:
             labels_content = f.read()
         y_train = np.zeros((60000,), dtype=int)
@@ -77,7 +77,7 @@ def load_data():
         np.save(path+'train-labels-idx1-ubyte.npy', y_train)
 
         # Downloading and converting MNIST test images
-        print("[INFO] downloading MNIST test images")
+        print("[INFO] Downloading MNIST test images")
         url = 'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz'
         filename = 't10k-images-idx3-ubyte.gz'
         resp = http.request('GET', url)
@@ -86,7 +86,7 @@ def load_data():
         f.close()
         resp.release_conn()
 
-        print("[INFO] converting MNIST test images to numpy arrays")
+        print("[INFO] Converting MNIST test images to numpy arrays")
         with gzip.open(path+'t10k-images-idx3-ubyte.gz', 'rb') as f:
             images_content = f.read()
         x_test = np.zeros((10000, 28, 28), dtype=int)
@@ -99,7 +99,7 @@ def load_data():
         np.save(path+'t10k-images-idx3-ubyte.npy', x_test)
 
         # Downloading and converting MNIST test labels
-        print("[INFO] downloading MNIST test labels")
+        print("[INFO] Downloading MNIST test labels")
         url = 'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
         filename = 't10k-labels-idx1-ubyte.gz'
         resp = http.request('GET', url)
@@ -108,7 +108,7 @@ def load_data():
         f.close()
         resp.release_conn()
 
-        print("[INFO] converting MNIST test labels to numpy arrays")
+        print("[INFO] Converting MNIST test labels to numpy arrays")
         with gzip.open(path+'t10k-labels-idx1-ubyte.gz', 'rb') as f:
             labels_content = f.read()
         y_test = np.zeros((10000,), dtype=int)
