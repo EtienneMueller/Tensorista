@@ -12,6 +12,9 @@ So far, it can do everything needed for a very basic neural network:
 - Train the model
 - Evaluate the model
 
+- [x] test
+  - [ ] test2
+
 ## How to use in Pythonista
 
 There a two ways: the easy one and the better one. The easy one would be to copy the tensorslow folder into site-packages from Pythonista. Then you can import everything like a normal module. But if you want to update, then you have to do it manually (although I might not work on this project that often). The nicer way is to use [Working Copy](https://workingcopy.app/) as git client. As iOS is a bit strict you have to clone the repo the following way:
