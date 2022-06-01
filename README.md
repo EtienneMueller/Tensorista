@@ -35,14 +35,35 @@ There is A LOT I want to add to this project! I mean, so far you can just create
 - [ ] tensorista
   - [ ] keras
     - [ ] dataset
+      - [x] mnist
+        - [x] load_data()
     - [ ] engine
+      - [ ] base_layer
+        - [ ] Layer
+      - [ ] training
+        - [ ] Model
     - [ ] utils
+      - [ ] generic_utils
+        - [x] Progbar
+       - [ ] np_utils
+        - [x] to_categorical
     - [ ] backend
+      - [x] sigmoid
+      - [x] d_sigmoid
+      - [x] relu
+      - [x] d_relu
     - [ ] layers
+      - [x] Dense(Layer)
+      - [x] ReLU(Layer)
     - [ ] losses
+      - [ ] SparseCategoricalCrossentropy
     - [ ] metrics
+      - [ ] SparseCategoricalAccuracy
     - [ ] models
+      - [ ] Functional
+      - [ ] Sequential
     - [ ] optimizers
+      - [ ] RMSprop
   - [ ] module
     - [ ] module
   - [x] random
