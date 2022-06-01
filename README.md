@@ -47,6 +47,7 @@ There is A LOT I want to add to this project! I mean, so far you can just create
         - [x] Progbar
        - [ ] np_utils
         - [x] to_categorical
+        - [ ] normalize
     - [ ] backend
       - [x] sigmoid
       - [x] d_sigmoid
