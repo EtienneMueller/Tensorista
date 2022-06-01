@@ -32,13 +32,20 @@ There is A LOT I want to add to this project! I mean, so far you can just create
 - Other losses and metrics
 - ...
 
+Structure of [Keras](https://github.com/keras-team/keras/tree/master/keras) (in bold the upcoming additions):
 - [ ] tensorista
   - [ ] keras
     - [ ] dataset
-      - [x] mnist
-        - [x] load_data()
+      - [ ] boston_housing.py
+      - [ ] cifar.py
+      - [ ] **cifar10.py**
+      - [ ] **cifar100.py**
+      - [ ] fashion_mnist.py
+      - [ ] imdb.py
+      - [x] mnist.py
+      - [ ] reuters.py
     - [ ] engine
-      - [ ] base_layer
+      - [ ] base_layer.py
         - [ ] Layer
       - [ ] training
         - [ ] Model
