@@ -12,8 +12,6 @@ So far, it can do everything needed for a very basic neural network:
 - Train the model
 - Evaluate the model
 
-- [x] test
-  - [ ] test2
 
 ## How to use in Pythonista
 
@@ -33,3 +31,18 @@ There is A LOT I want to add to this project! I mean, so far you can just create
 - Adam and other optimizers
 - Other losses and metrics
 - ...
+
+- [ ] tensorista
+  - [ ] keras
+    - [ ] dataset
+    - [ ] engine
+    - [ ] utils
+    - [ ] backend
+    - [ ] layers
+    - [ ] losses
+    - [ ] metrics
+    - [ ] models
+    - [ ] optimizers
+  - [ ] module
+    - [ ] module
+  - [x] random
