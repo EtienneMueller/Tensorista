@@ -2,6 +2,9 @@ import numpy as np
 import time
 import sys
 
+if sys.platform == "ios":
+    from objc_util import *
+
 
 class Progbar:
     def __init__(self,
@@ -16,6 +19,22 @@ class Progbar:
         self.verbose = verbose
         self.interval = interval
         self._seen_so_far = 0
+
+    
+    #@on_main_thread
+    def reprint_line():
+        app = UIApplication.sharedApplication()
+        rootVC = app.keyWindow().rootViewController()
+        cvc = rootVC.accessoryViewController().consoleViewController()
+        tv = cvc.view().subviews()[0]
+        ts = tv.textStorage()
+        end_char = ts.length()
+        r = ts.paragraphRangeForCharacterRange_(NSRange(end_char-1))
+        p = ts.paragraphs()[r.location-1]
+        ts.replaceCharactersInRange_withString_(p.range(),ns(''))
+        tv.setNeedsLayout()
+        return p
+
 
     def update(self, current, values=None, finalize=None):
         # if target==None:     200/Unknown - 2s 10ms/step - acc: 0.4862 - pr: 0.6632Model: "seq1"
@@ -37,7 +56,7 @@ class Progbar:
                 #)"""
         self._seen_so_far = current
         if sys.platform == "ios":
-            endline = "\n"
+            reprint_line()
         else:
             endline = "\r"
         print(
@@ -50,8 +69,10 @@ class Progbar:
             "ETA: ",
             values, end=endline)
 
+
     def add(self, n, values=None):
         self.update(self._seen_so_far + n, values)
+
 
     def _estimate_step_duration(self, current, now):
         print(time.time())
