@@ -3,22 +3,8 @@ import time
 import sys
 
 if sys.platform == "ios":
-    from objc_util import *
-
-
-@on_main_thread
-def reprint_line():
-	app = UIApplication.sharedApplication()
-	rootVC = app.keyWindow().rootViewController()
-	cvc = rootVC.accessoryViewController().consoleViewController()
-	tv = cvc.view().subviews()[0]
-	ts = tv.textStorage()
-	end_char = ts.length()
-	r = ts.paragraphRangeForCharacterRange_(NSRange(end_char-1))
-	p = ts.paragraphs()[r.location-1]
-	ts.replaceCharactersInRange_withString_(p.range(),ns(''))
-	tv.setNeedsLayout()
-	return p
+    #from objc_util import *
+    import objc_util
 
 
 class Progbar:
@@ -56,7 +42,13 @@ class Progbar:
                 #)"""
         self._seen_so_far = current
         if sys.platform == "ios":
-            reprint_line()
+            textview = objc_util.UIApplication.sharedApplication().keyWindow().rootViewController().accessoryViewController().consoleViewController().view().subviews()[0]
+            textstorage = textview.textStorage()
+            end_char = textstorage.length()
+            r = textstorage.paragraphRangeForCharacterRange_(objc_util.NSRange(end_char-1))
+            p = textstorage.paragraphs()[r.location-1]
+            textstorage.replaceCharactersInRange_withString_(p.range(),objc_util.ns(''))
+            textview.setNeedsLayout()
             endline = '\n'
         else:
             endline = "\r"
